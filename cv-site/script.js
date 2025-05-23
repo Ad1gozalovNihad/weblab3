@@ -1,4 +1,28 @@
-// EDUCATION -- button and form
+document.querySelectorAll('.accordion').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    
+    const parent = btn.closest('.sidebar') || btn.closest('.main');
+    parent.querySelectorAll('.panel').forEach(function(panel) {
+      if (panel !== btn.nextElementSibling) {
+        panel.style.maxHeight = null;
+        if(panel.previousElementSibling && panel.previousElementSibling.classList.contains('accordion')) {
+          panel.previousElementSibling.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+    const panel = btn.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+      btn.setAttribute('aria-expanded', 'false');
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+
+
 document.getElementById('add-education-btn').onclick = function() {
   document.getElementById('education-form').classList.remove('hidden');
   document.getElementById('edu-years').focus();
@@ -24,7 +48,7 @@ document.getElementById('save-education-btn').onclick = function() {
   }
 };
 
-// SKILLS -- button and form
+
 document.getElementById('add-skill-btn').onclick = function() {
   document.getElementById('skill-form').classList.remove('hidden');
   document.getElementById('skill-input').focus();
@@ -44,7 +68,7 @@ document.getElementById('save-skill-btn').onclick = function() {
   }
 };
 
-// LANGUAGES -- button and form
+
 document.getElementById('add-language-btn').onclick = function() {
   document.getElementById('language-form').classList.remove('hidden');
   document.getElementById('language-input').focus();
@@ -64,7 +88,6 @@ document.getElementById('save-language-btn').onclick = function() {
   }
 };
 
-// PROFILE -- edit
 document.getElementById('edit-profile-btn').onclick = function() {
   document.getElementById('profile-form').classList.remove('hidden');
   document.getElementById('profile-input').value = document.getElementById('profile-text').innerText.trim();
@@ -81,7 +104,6 @@ document.getElementById('save-profile-btn').onclick = function() {
   }
 };
 
-// WORK EXPERIENCE -- button and form
 document.getElementById('add-work-btn').onclick = function() {
   document.getElementById('work-form').classList.remove('hidden');
   document.getElementById('work-company').focus();
@@ -108,7 +130,7 @@ document.getElementById('save-work-btn').onclick = function() {
   }
 };
 
-// REFERENCES -- button and form
+
 document.getElementById('add-reference-btn').onclick = function() {
   document.getElementById('reference-form').classList.remove('hidden');
   document.getElementById('ref-name').focus();
