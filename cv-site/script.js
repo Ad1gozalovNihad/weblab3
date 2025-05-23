@@ -92,8 +92,10 @@ function renderAll() {
 
 function renderList(type) {
   let arr = cvData[type];
-  let ul = document.getElementById(type + (type === 'skills' ? '-ul' : type === 'languages' ? '-ul' : type === 'contact' ? '-ul' : type === 'profile' ? '-ul' : ''));
+  let ul = document.getElementById(type + '-ul');
   if (!ul) return;
+  // Əlavə inputdan başqa hər şeyi sil
+  let addInput = ul.querySelector('.add-new-item');
   ul.innerHTML = '';
   arr.forEach((item, idx) => {
     let li = document.createElement('li');
@@ -104,6 +106,7 @@ function renderList(type) {
     `;
     ul.appendChild(li);
   });
+  if (addInput) ul.appendChild(addInput);
 }
 
 function renderEducation() {
@@ -118,6 +121,8 @@ function renderEducation() {
     `;
     ul.appendChild(li);
   });
+  let addInput = ul.querySelector('.add-new-item');
+  if (addInput) ul.appendChild(addInput);
 }
 
 function renderJobs() {
@@ -135,6 +140,8 @@ function renderJobs() {
     `;
     jobsDiv.appendChild(div);
   });
+  let addInput = jobsDiv.querySelector('.add-new-item');
+  if (addInput) jobsDiv.appendChild(addInput);
 }
 
 function renderReferences() {
@@ -155,11 +162,13 @@ function renderReferences() {
     `;
     ul.appendChild(li);
   });
+  let addInput = ul.querySelector('.add-new-item');
+  if (addInput) ul.appendChild(addInput);
 }
 
-
+// Generic for contact, skills, languages, profile
 function editField(type, idx) {
-  let ul = document.getElementById(type + (type === 'skills' ? '-ul' : type === 'languages' ? '-ul' : type === 'contact' ? '-ul' : type === 'profile' ? '-ul' : ''));
+  let ul = document.getElementById(type + '-ul');
   let val = cvData[type][idx];
   let li = ul.children[idx];
   li.innerHTML = `
@@ -180,6 +189,7 @@ function deleteField(type, idx) {
   renderList(type);
 }
 
+// Education
 function editEducation(idx) {
   let ul = document.getElementById('education-ul');
   let item = cvData.education[idx];
@@ -208,6 +218,7 @@ function deleteEducation(idx) {
   renderEducation();
 }
 
+// Jobs
 function editJob(idx) {
   let jobsDiv = document.getElementById('jobs-container');
   let job = cvData.jobs[idx];
@@ -239,6 +250,7 @@ function deleteJob(idx) {
   renderJobs();
 }
 
+// References
 function editReference(idx) {
   let ul = document.getElementById('references-ul');
   let ref = cvData.references[idx];
@@ -271,30 +283,36 @@ function deleteReference(idx) {
   renderReferences();
 }
 
+// === 4. Add New Data ===
 function showAddField(type) {
   let ul;
   if (type === 'education') ul = document.getElementById('education-ul');
-  else if (type === 'job') document.getElementById('jobs-container').insertAdjacentHTML('beforeend', addJobHtml());
-  else if (type === 'reference') ul = document.getElementById('references-ul');
+  else if (type === 'jobs') document.getElementById('jobs-container').insertAdjacentHTML('beforeend', addJobHtml());
+  else if (type === 'references') ul = document.getElementById('references-ul');
   else if (type === 'profile') ul = document.getElementById('profile-ul');
   else ul = document.getElementById(type + '-ul');
 
+  if (ul) {
+    let prev = ul.querySelector('.add-new-item');
+    if (prev) prev.remove();
+  }
+
   if (type === 'education') {
     let li = document.createElement('li');
-    li.className = 'editable-inputs';
+    li.className = 'add-new-item';
     li.innerHTML = `
       <input type="text" placeholder="İllər" /><br>
       <input type="text" placeholder="Təhsil müəssisəsi" /><br>
       <input type="text" placeholder="İxtisas" /><br>
       <button class="save-btn" onclick="addEducation(this)">✔</button>
-      <button class="cancel-btn" onclick="renderEducation()">✖</button>
+      <button class="cancel-btn" onclick="this.parentElement.remove()">✖</button>
     `;
     ul.appendChild(li);
-  } else if (type === 'job') {
-
-  } else if (type === 'reference') {
+  } else if (type === 'jobs') {
+    // handled by addJobHtml()
+  } else if (type === 'references') {
     let li = document.createElement('li');
-    li.className = 'editable-inputs';
+    li.className = 'add-new-item';
     li.innerHTML = `
       <input type="text" placeholder="Ad Soyad" /><br>
       <input type="text" placeholder="Vəzifə və şirkət" /><br>
@@ -302,25 +320,25 @@ function showAddField(type) {
       <input type="text" placeholder="Telefon" /><br>
       <input type="text" placeholder="Email" /><br>
       <button class="save-btn" onclick="addReference(this)">✔</button>
-      <button class="cancel-btn" onclick="renderReferences()">✖</button>
+      <button class="cancel-btn" onclick="this.parentElement.remove()">✖</button>
     `;
     ul.appendChild(li);
   } else if (type === 'profile') {
     let li = document.createElement('li');
-    li.className = 'editable-inputs';
+    li.className = 'add-new-item';
     li.innerHTML = `
       <textarea placeholder="Profil mətni" rows="3"></textarea>
       <button class="save-btn" onclick="addProfile(this)">✔</button>
-      <button class="cancel-btn" onclick="renderList('profile')">✖</button>
+      <button class="cancel-btn" onclick="this.parentElement.remove()">✖</button>
     `;
     ul.appendChild(li);
   } else {
     let li = document.createElement('li');
-    li.className = 'editable-inputs';
+    li.className = 'add-new-item';
     li.innerHTML = `
       <input type="text" placeholder="Yeni məlumat" />
       <button class="save-btn" onclick="addSimple('${type}', this)">✔</button>
-      <button class="cancel-btn" onclick="renderList('${type}')">✖</button>
+      <button class="cancel-btn" onclick="this.parentElement.remove()">✖</button>
     `;
     ul.appendChild(li);
   }
@@ -362,13 +380,13 @@ function addReference(btn) {
 }
 function addJobHtml() {
   return `
-    <div class="job editable-inputs">
+    <div class="job add-new-item">
       <input type="text" placeholder="Şirkət" /><br>
       <input type="text" placeholder="İş dövrü" /><br>
       <textarea rows="3" placeholder="Tapşırıqlar (sətir-sətir)"></textarea>
       <br>
       <button class="save-btn" onclick="addJob(this)">✔</button>
-      <button class="cancel-btn" onclick="renderJobs()">✖</button>
+      <button class="cancel-btn" onclick="this.parentElement.remove()">✖</button>
     </div>
   `;
 }
@@ -385,14 +403,14 @@ function addJob(btn) {
   renderJobs();
 }
 
-
+// Dropdown toggles
 document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
   toggle.addEventListener('click', function() {
     const targetId = this.getAttribute('data-target');
     const content = document.getElementById(targetId);
     if (!content) return;
     content.classList.toggle('closed');
-
+    // Rotate arrow
     const arrow = this.querySelector('.arrow');
     if (content.classList.contains('closed')) {
       arrow.style.transform = "rotate(-90deg)";
