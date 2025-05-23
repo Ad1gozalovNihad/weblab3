@@ -9,8 +9,6 @@ body {
   min-height: 100vh;
   background: #f2f2f2;
   padding: 20px;
-  display: center;
-  justify-content: center;
 }
 
 .container {
@@ -90,10 +88,6 @@ body {
 
 .sidebar-section, .main-section {
   margin-bottom: 10px;
-}
-
-.sidebar h3, .main .section-title {
-  display: none;
 }
 
 .main {
