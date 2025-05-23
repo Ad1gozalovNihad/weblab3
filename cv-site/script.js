@@ -1,489 +1,405 @@
-
-
-const profilePic = "images/helpdesk.png";
-
-let contact = {
-  phone: "+994 55 607 12 57",
-  email: "adigozelovnihad113@gmail.com",
-  address: "Baki şəhəri, Nizami rayonu, Keşlə qəsəbəsi, Pəhlivan Fərzəliyev 160"
+const cvData = {
+  name: "Nihad Adigozelov",
+  title: "IT Specialist",
+  profilePic: "images/helpdesk.png",
+  contact: [
+    "+994 55 607 12 57",
+    "adigozelovnihad113@gmail.com",
+    "Baki şəhəri, Nizami rayonu, Keşlə qəsəbəsi, Pəhlivan Fərzəliyev 160"
+  ],
+  education: [
+    {
+      years: "2024 - 2028",
+      school: "Azərbaycan Texniki Universiteti",
+      major: "İnformasiya təhlükəsizliyi"
+    },
+    {
+      years: "2024 - 2025",
+      school: "IKT lab təlim və tədris mərkəzi",
+      major: "İT Specialist"
+    }
+  ],
+  skills: [
+    "Əməliyyat Sistemləri və Proqram Təminatı",
+    "Hardware və Troubleshooting",
+    "Təhlükəsizlik və Məlumat Bərpası",
+    "Şəbəkə və İnfrastruktur",
+    "Printer və skanerlərin quraşdırılması",
+    "Virtual maşınların qurulması",
+    "Şəbəkə bilikləri (başlanğıc səviyyə)",
+    "Hireboot"
+  ],
+  languages: [
+    "Azərbaycan dili (ana dili)",
+    "English (technical)",
+    "Russian (technical)"
+  ],
+  profile: [
+    "İT sahəsində təhsil alan, texnologiyalara maraqlı və öyrənməyə həvəsli bir tələbəyəm. Praktiki bacarıqlarımı inkişaf etdirmək və real layihələrdə iştirak etmək üçün daim öz üzərimdə çalışıram."
+  ],
+  jobs: [
+    {
+      company: "Faiqoglu MMC",
+      period: "İyun 2023 - İndiki zaman",
+      tasks: [
+        "İT specialist vəzifəsində kompüter sistemlərinin və şəbəkənin idarə edilməsi",
+        "Texniki dəstək və problemlərin həlli",
+        "Avadanlıqların quraşdırılması və texniki xidməti"
+      ]
+    },
+    {
+      company: "Ulduz şokalad fabriki",
+      period: "Yanvar 2022 - May 2023",
+      tasks: [
+        "System Administrator kimi şirkətin IT infrastrukturunun idarə edilməsi",
+        "Server və şəbəkə təhlükəsizliyinin təmin edilməsi",
+        "Proqram təminatı və əməliyyat sistemlərinin yenilənməsi"
+      ]
+    },
+    {
+      company: "Bravo Market",
+      period: "May 2021 - Dekabr 2021",
+      tasks: [
+        "Sistem infrastrukturunun qurulması və inkişafı",
+        "POS terminallarının və ödəmə sistemlərinin quraşdırılması",
+        "Şəbəkə avadanlıqlarının konfiqurasiyası və texniki xidməti"
+      ]
+    }
+  ],
+  references: [
+    {
+      name: "Cebiyev Kamil",
+      position: "IT Manager, Faiqoglu MMC",
+      address: "20-ci sahe, 223",
+      tel: "+994 50 211 12 99",
+      email: "faiqoglu.mmc@gmail.com"
+    }
+  ]
 };
 
-let education = [
-  {
-    years: "2024 - 2028",
-    school: "Azərbaycan Texniki Universiteti",
-    specialty: "İnformasiya təhlükəsizliyi"
-  },
-  {
-    years: "2024 - 2025",
-    school: "IKT lab təlim və tədris mərkəzi",
-    specialty: "İT Specialist"
-  }
-];
-
-let skills = [
-  "Əməliyyat Sistemləri və Proqram Təminatı",
-  "Hardware və Troubleshooting",
-  "Təhlükəsizlik və Məlumat Bərpası",
-  "Şəbəkə və İnfrastruktur",
-  "Printer və skanerlərin quraşdırılması",
-  "Virtual maşınların qurulması",
-  "Şəbəkə bilikləri (başlanğıc səviyyə)",
-  "Hireboot"
-];
-
-let languages = [
-  "Azərbaycan dili (ana dili)",
-  "English (technical)",
-  "Russian (technical)"
-];
-
-let profileText = `İT sahəsində təhsil alan, texnologiyalara maraqlı və öyrənməyə həvəsli bir tələbəyəm. Praktiki bacarıqlarımı inkişaf etdirmək və real layihələrdə iştirak etmək üçün fürsətlər axtarıram. Komanda ilə işləmə və problemləri həll etmə bacarığım güclüdür.`;
-
-let workExperience = [
-  {
-    company: "Faiqoglu MMC",
-    period: "İyun 2023 - İndiki zaman",
-    details: [
-      "İT specialist vəzifəsində kompüter sistemlərinin və şəbəkənin idarə edilməsi",
-      "Texniki dəstək və problemlərin həlli",
-      "Avadanlıqların quraşdırılması və texniki xidməti"
-    ]
-  },
-  {
-    company: "Ulduz şokalad fabriki",
-    period: "Yanvar 2022 - May 2023",
-    details: [
-      "System Administrator kimi şirkətin IT infrastrukturunun idarə edilməsi",
-      "Server və şəbəkə təhlükəsizliyinin təmin edilməsi",
-      "Proqram təminatı və əməliyyat sistemlərinin yenilənməsi"
-    ]
-  },
-  {
-    company: "Bravo Market",
-    period: "May 2021 - Dekabr 2021",
-    details: [
-      "Sistem infrastrukturunun qurulması və inkişafı",
-      "POS terminallarının və ödəmə sistemlərinin quraşdırılması",
-      "Şəbəkə avadanlıqlarının konfiqurasiyası və texniki xidməti"
-    ]
-  }
-];
-
-let references = [
-  {
-    name: "Cebiyev Kamil",
-    position: "IT Manager, Faiqoglu MMC",
-    address: "20-ci sahe, 223",
-    phone: "+994 50 211 12 99",
-    email: "faiqoglu.mmc@gmail.com"
-  }
-];
-
-
-
-function renderSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  sidebar.innerHTML = `
-    <img class="profile-pic" src="${profilePic}" alt="Profile Picture" />
-
-    <div class="sidebar-section">
-      <button class="accordion" type="button">Contact</button>
-      <div class="panel">
-        <p>${contact.phone}</p>
-        <p>${contact.email}</p>
-        <p>${contact.address}</p>
-      </div>
-    </div>
-
-    <div class="sidebar-section">
-      <button class="accordion" type="button">Education</button>
-      <div class="panel">
-        <div id="education-section">
-          ${education.map((e, idx) => `
-            <p>
-              ${e.years}<br />
-              ${e.school}<br />
-              ${e.specialty}
-              <button class="remove-btn" onclick="removeEducation(${idx})">Sil</button>
-            </p>
-          `).join("")}
-        </div>
-        <button id="add-education-btn" class="add-btn">Yeni Təhsil Əlavə Et</button>
-        <div id="education-form" class="hidden">
-          <input type="text" id="edu-years" placeholder="İllər (məs: 2024-2028)" />
-          <input type="text" id="edu-school" placeholder="Təhsil müəssisəsi" />
-          <input type="text" id="edu-specialty" placeholder="İxtisas" />
-          <button id="save-education-btn" class="save-btn">Əlavə et</button>
-          <button id="cancel-education-btn" class="cancel-btn">Ləğv et</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="sidebar-section">
-      <button class="accordion" type="button">Skills</button>
-      <div class="panel">
-        <ul id="skills-section">
-          ${skills.map((skill, idx) => `<li>${skill} <button class="remove-btn" onclick="removeSkill(${idx})">Sil</button></li>`).join("")}
-        </ul>
-        <button id="add-skill-btn" class="add-btn">Yeni Bacarıq Əlavə Et</button>
-        <div id="skill-form" class="hidden">
-          <input type="text" id="skill-input" placeholder="Bacarıq" />
-          <button id="save-skill-btn" class="save-btn">Əlavə et</button>
-          <button id="cancel-skill-btn" class="cancel-btn">Ləğv et</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="sidebar-section">
-      <button class="accordion" type="button">Languages</button>
-      <div class="panel">
-        <ul id="languages-section">
-          ${languages.map((lang, idx) => `<li>${lang} <button class="remove-btn" onclick="removeLanguage(${idx})">Sil</button></li>`).join("")}
-        </ul>
-        <button id="add-language-btn" class="add-btn">Yeni Dil Əlavə Et</button>
-        <div id="language-form" class="hidden">
-          <input type="text" id="language-input" placeholder="Dil və səviyyə" />
-          <button id="save-language-btn" class="save-btn">Əlavə et</button>
-          <button id="cancel-language-btn" class="cancel-btn">Ləğv et</button>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function renderMain() {
-  const main = document.getElementById("main");
-  main.innerHTML = `
-    <h1><b>Nihad Adigozelov</b></h1>
-    <h2><b>IT Specialist</b></h2>
-
-    <div class="main-section">
-      <button class="accordion" type="button">Profile</button>
-      <div class="panel">
-        <div class="section-title">Profile</div>
-        <p id="profile-text">${profileText}</p>
-        <button id="edit-profile-btn" class="add-btn">Profili Redaktə Et</button>
-        <div id="profile-form" class="hidden">
-          <textarea id="profile-input"></textarea>
-          <button id="save-profile-btn" class="save-btn">Yadda saxla</button>
-          <button id="cancel-profile-btn" class="cancel-btn">Ləğv et</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="main-section">
-      <button class="accordion" type="button">Work Experience</button>
-      <div class="panel">
-        <div class="section-title">Work Experience</div>
-        <div id="work-section">
-          ${workExperience.map((job, idx) => `
-            <div class="job">
-              <h4>${job.company}</h4>
-              <div class="job-period">${job.period}</div>
-              <ul>
-                ${job.details.map(detail => `<li>${detail}</li>`).join("")}
-              </ul>
-              <button class="remove-btn" onclick="removeWork(${idx})">Sil</button>
-            </div>
-          `).join("")}
-        </div>
-        <button id="add-work-btn" class="add-btn">Yeni İş Əlavə Et</button>
-        <div id="work-form" class="hidden">
-          <input type="text" id="work-company" placeholder="Şirkət" />
-          <input type="text" id="work-period" placeholder="Dövriyyə (məs: 2022 - 2023)" />
-          <textarea id="work-description" placeholder="Vəzifə və iş təsviri"></textarea>
-          <button id="save-work-btn" class="save-btn">Əlavə et</button>
-          <button id="cancel-work-btn" class="cancel-btn">Ləğv et</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="main-section">
-      <button class="accordion" type="button">References</button>
-      <div class="panel">
-        <div class="section-title">References</div>
-        <div class="reference" id="reference-section">
-          ${references.map((ref, idx) => `
-            <p>
-              <strong>${ref.name}</strong><br />
-              ${ref.position}<br />
-              ${ref.address}<br />
-              Tel: ${ref.phone}<br />
-              ${ref.email}
-              <button class="remove-btn" onclick="removeReference(${idx})">Sil</button>
-            </p>
-          `).join("")}
-        </div>
-        <button id="add-reference-btn" class="add-btn">Yeni Referans Əlavə Et</button>
-        <div id="reference-form" class="hidden">
-          <input type="text" id="ref-name" placeholder="Ad və soyad" />
-          <input type="text" id="ref-position" placeholder="Vəzifə və şirkət" />
-          <input type="text" id="ref-address" placeholder="Ünvan" />
-          <input type="text" id="ref-phone" placeholder="Telefon" />
-          <input type="text" id="ref-email" placeholder="E-mail" />
-          <button id="save-reference-btn" class="save-btn">Əlavə et</button>
-          <button id="cancel-reference-btn" class="cancel-btn">Ləğv et</button>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-
-
 function renderAll() {
-  renderSidebar();
-  renderMain();
-  setAccordionHandlers();
-  setFormHandlers();
+  document.getElementById('profile-pic').src = cvData.profilePic;
+  document.getElementById('main-name').textContent = cvData.name;
+  document.getElementById('main-title').textContent = cvData.title;
+  renderList('contact');
+  renderEducation();
+  renderList('skills');
+  renderList('languages');
+  renderList('profile');
+  renderJobs();
+  renderReferences();
 }
-window.onload = renderAll;
 
+function renderList(type) {
+  let arr = cvData[type];
+  let ul = document.getElementById(type + (type === 'skills' ? '-ul' : type === 'languages' ? '-ul' : type === 'contact' ? '-ul' : type === 'profile' ? '-ul' : ''));
+  if (!ul) return;
+  ul.innerHTML = '';
+  arr.forEach((item, idx) => {
+    let li = document.createElement('li');
+    li.innerHTML = `
+      <span>${item}</span>
+      <button class="edit-btn" onclick="editField('${type}',${idx})">&#9998;</button>
+      <button class="delete-btn" onclick="deleteField('${type}',${idx})">&#10006;</button>
+    `;
+    ul.appendChild(li);
+  });
+}
 
-function setAccordionHandlers() {
-  document.querySelectorAll('.accordion').forEach(function(btn) {
-    btn.setAttribute('aria-expanded', 'false');
-    btn.onclick = function() {
-      const parent = btn.closest('.sidebar') || btn.closest('.main');
-      parent.querySelectorAll('.panel').forEach(function(panel) {
-        if (panel !== btn.nextElementSibling) {
-          panel.style.maxHeight = null;
-          if(panel.previousElementSibling && panel.previousElementSibling.classList.contains('accordion')) {
-            panel.previousElementSibling.setAttribute('aria-expanded', 'false');
-          }
-        }
-      });
-      const panel = btn.nextElementSibling;
-      if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-        btn.setAttribute('aria-expanded', 'false');
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    };
+function renderEducation() {
+  let ul = document.getElementById('education-ul');
+  ul.innerHTML = '';
+  cvData.education.forEach((item, idx) => {
+    let li = document.createElement('li');
+    li.innerHTML = `
+      <span>${item.years}<br>${item.school}<br>${item.major}</span>
+      <button class="edit-btn" onclick="editEducation(${idx})">&#9998;</button>
+      <button class="delete-btn" onclick="deleteEducation(${idx})">&#10006;</button>
+    `;
+    ul.appendChild(li);
+  });
+}
+
+function renderJobs() {
+  let jobsDiv = document.getElementById('jobs-container');
+  jobsDiv.innerHTML = '';
+  cvData.jobs.forEach((job, idx) => {
+    let div = document.createElement('div');
+    div.className = "job";
+    div.innerHTML = `
+      <h4>${job.company}</h4>
+      <div class="job-period">${job.period}</div>
+      <ul>${job.tasks.map(t=>`<li>${t}</li>`).join('')}</ul>
+      <button class="edit-btn" onclick="editJob(${idx})">&#9998;</button>
+      <button class="delete-btn" onclick="deleteJob(${idx})">&#10006;</button>
+    `;
+    jobsDiv.appendChild(div);
+  });
+}
+
+function renderReferences() {
+  let ul = document.getElementById('references-ul');
+  ul.innerHTML = '';
+  cvData.references.forEach((ref, idx) => {
+    let li = document.createElement('li');
+    li.innerHTML = `
+      <span>
+        <strong>${ref.name}</strong><br>
+        ${ref.position}<br>
+        ${ref.address}<br>
+        Tel: ${ref.tel}<br>
+        ${ref.email}
+      </span>
+      <button class="edit-btn" onclick="editReference(${idx})">&#9998;</button>
+      <button class="delete-btn" onclick="deleteReference(${idx})">&#10006;</button>
+    `;
+    ul.appendChild(li);
   });
 }
 
 
-
-// Education
-function removeEducation(idx) {
-  education.splice(idx, 1);
-  renderAll();
+function editField(type, idx) {
+  let ul = document.getElementById(type + (type === 'skills' ? '-ul' : type === 'languages' ? '-ul' : type === 'contact' ? '-ul' : type === 'profile' ? '-ul' : ''));
+  let val = cvData[type][idx];
+  let li = ul.children[idx];
+  li.innerHTML = `
+    <input type="text" value="${val}" />
+    <button class="save-btn" onclick="saveField('${type}',${idx}, this)">✔</button>
+    <button class="cancel-btn" onclick="renderList('${type}')">✖</button>
+  `;
 }
-function setFormHandlers() {
-  // Education
-  let addEdu = document.getElementById('add-education-btn');
-  if (addEdu) addEdu.onclick = function() {
-    document.getElementById('education-form').classList.remove('hidden');
-    document.getElementById('edu-years').focus();
+function saveField(type, idx, btn) {
+  let input = btn.parentElement.querySelector('input');
+  if (!input.value.trim()) return alert('Boş buraxmayın!');
+  cvData[type][idx] = input.value;
+  renderList(type);
+}
+function deleteField(type, idx) {
+  if (!confirm("Silməyə əminsiniz?")) return;
+  cvData[type].splice(idx, 1);
+  renderList(type);
+}
+
+function editEducation(idx) {
+  let ul = document.getElementById('education-ul');
+  let item = cvData.education[idx];
+  let li = ul.children[idx];
+  li.innerHTML = `
+    <input type="text" value="${item.years}" placeholder="İllər" /><br>
+    <input type="text" value="${item.school}" placeholder="Təhsil müəssisəsi" /><br>
+    <input type="text" value="${item.major}" placeholder="İxtisas" /><br>
+    <button class="save-btn" onclick="saveEducation(${idx}, this)">✔</button>
+    <button class="cancel-btn" onclick="renderEducation()">✖</button>
+  `;
+}
+function saveEducation(idx, btn) {
+  let inputs = btn.parentElement.querySelectorAll('input');
+  if ([...inputs].some(i=>!i.value.trim())) return alert("Boş buraxmayın!");
+  cvData.education[idx] = {
+    years: inputs[0].value,
+    school: inputs[1].value,
+    major: inputs[2].value
   };
-  let cancelEdu = document.getElementById('cancel-education-btn');
-  if (cancelEdu) cancelEdu.onclick = function() {
-    document.getElementById('education-form').classList.add('hidden');
-    document.getElementById('edu-years').value = '';
-    document.getElementById('edu-school').value = '';
-    document.getElementById('edu-specialty').value = '';
+  renderEducation();
+}
+function deleteEducation(idx) {
+  if (!confirm("Silməyə əminsiniz?")) return;
+  cvData.education.splice(idx, 1);
+  renderEducation();
+}
+
+function editJob(idx) {
+  let jobsDiv = document.getElementById('jobs-container');
+  let job = cvData.jobs[idx];
+  let div = jobsDiv.children[idx];
+  div.innerHTML = `
+    <input type="text" value="${job.company}" placeholder="Şirkət" /><br>
+    <input type="text" value="${job.period}" placeholder="İş dövrü" /><br>
+    <textarea rows="3" placeholder="Tapşırıqlar (sətir-sətir)">${job.tasks.join('\n')}</textarea>
+    <br>
+    <button class="save-btn" onclick="saveJob(${idx}, this)">✔</button>
+    <button class="cancel-btn" onclick="renderJobs()">✖</button>
+  `;
+}
+function saveJob(idx, btn) {
+  let parent = btn.parentElement;
+  let inputs = parent.querySelectorAll('input');
+  let tasks = parent.querySelector('textarea').value.split('\n').map(t=>t.trim()).filter(Boolean);
+  if ([...inputs].some(i=>!i.value.trim()) || tasks.length === 0) return alert("Boş buraxmayın!");
+  cvData.jobs[idx] = {
+    company: inputs[0].value,
+    period: inputs[1].value,
+    tasks
   };
-  let saveEdu = document.getElementById('save-education-btn');
-  if (saveEdu) saveEdu.onclick = function() {
-    const years = document.getElementById('edu-years').value.trim();
-    const school = document.getElementById('edu-school').value.trim();
-    const specialty = document.getElementById('edu-specialty').value.trim();
-    if (years && school && specialty) {
-      education.push({years, school, specialty});
-      renderAll();
+  renderJobs();
+}
+function deleteJob(idx) {
+  if (!confirm("Silməyə əminsiniz?")) return;
+  cvData.jobs.splice(idx, 1);
+  renderJobs();
+}
+
+function editReference(idx) {
+  let ul = document.getElementById('references-ul');
+  let ref = cvData.references[idx];
+  let li = ul.children[idx];
+  li.innerHTML = `
+    <input type="text" value="${ref.name}" placeholder="Ad Soyad" /><br>
+    <input type="text" value="${ref.position}" placeholder="Vəzifə və şirkət" /><br>
+    <input type="text" value="${ref.address}" placeholder="Ünvan" /><br>
+    <input type="text" value="${ref.tel}" placeholder="Telefon" /><br>
+    <input type="text" value="${ref.email}" placeholder="Email" /><br>
+    <button class="save-btn" onclick="saveReference(${idx}, this)">✔</button>
+    <button class="cancel-btn" onclick="renderReferences()">✖</button>
+  `;
+}
+function saveReference(idx, btn) {
+  let inputs = btn.parentElement.querySelectorAll('input');
+  if ([...inputs].some(i=>!i.value.trim())) return alert("Boş buraxmayın!");
+  cvData.references[idx] = {
+    name: inputs[0].value,
+    position: inputs[1].value,
+    address: inputs[2].value,
+    tel: inputs[3].value,
+    email: inputs[4].value
+  };
+  renderReferences();
+}
+function deleteReference(idx) {
+  if (!confirm("Silməyə əminsiniz?")) return;
+  cvData.references.splice(idx, 1);
+  renderReferences();
+}
+
+function showAddField(type) {
+  let ul;
+  if (type === 'education') ul = document.getElementById('education-ul');
+  else if (type === 'job') document.getElementById('jobs-container').insertAdjacentHTML('beforeend', addJobHtml());
+  else if (type === 'reference') ul = document.getElementById('references-ul');
+  else if (type === 'profile') ul = document.getElementById('profile-ul');
+  else ul = document.getElementById(type + '-ul');
+
+  if (type === 'education') {
+    let li = document.createElement('li');
+    li.className = 'editable-inputs';
+    li.innerHTML = `
+      <input type="text" placeholder="İllər" /><br>
+      <input type="text" placeholder="Təhsil müəssisəsi" /><br>
+      <input type="text" placeholder="İxtisas" /><br>
+      <button class="save-btn" onclick="addEducation(this)">✔</button>
+      <button class="cancel-btn" onclick="renderEducation()">✖</button>
+    `;
+    ul.appendChild(li);
+  } else if (type === 'job') {
+
+  } else if (type === 'reference') {
+    let li = document.createElement('li');
+    li.className = 'editable-inputs';
+    li.innerHTML = `
+      <input type="text" placeholder="Ad Soyad" /><br>
+      <input type="text" placeholder="Vəzifə və şirkət" /><br>
+      <input type="text" placeholder="Ünvan" /><br>
+      <input type="text" placeholder="Telefon" /><br>
+      <input type="text" placeholder="Email" /><br>
+      <button class="save-btn" onclick="addReference(this)">✔</button>
+      <button class="cancel-btn" onclick="renderReferences()">✖</button>
+    `;
+    ul.appendChild(li);
+  } else if (type === 'profile') {
+    let li = document.createElement('li');
+    li.className = 'editable-inputs';
+    li.innerHTML = `
+      <textarea placeholder="Profil mətni" rows="3"></textarea>
+      <button class="save-btn" onclick="addProfile(this)">✔</button>
+      <button class="cancel-btn" onclick="renderList('profile')">✖</button>
+    `;
+    ul.appendChild(li);
+  } else {
+    let li = document.createElement('li');
+    li.className = 'editable-inputs';
+    li.innerHTML = `
+      <input type="text" placeholder="Yeni məlumat" />
+      <button class="save-btn" onclick="addSimple('${type}', this)">✔</button>
+      <button class="cancel-btn" onclick="renderList('${type}')">✖</button>
+    `;
+    ul.appendChild(li);
+  }
+}
+
+function addSimple(type, btn) {
+  let input = btn.parentElement.querySelector('input');
+  if (!input.value.trim()) return alert("Boş buraxmayın!");
+  cvData[type].push(input.value);
+  renderList(type);
+}
+function addEducation(btn) {
+  let inputs = btn.parentElement.querySelectorAll('input');
+  if ([...inputs].some(i=>!i.value.trim())) return alert("Boş buraxmayın!");
+  cvData.education.push({
+    years: inputs[0].value,
+    school: inputs[1].value,
+    major: inputs[2].value
+  });
+  renderEducation();
+}
+function addProfile(btn) {
+  let textarea = btn.parentElement.querySelector('textarea');
+  if (!textarea.value.trim()) return alert("Boş buraxmayın!");
+  cvData.profile.push(textarea.value);
+  renderList('profile');
+}
+function addReference(btn) {
+  let inputs = btn.parentElement.querySelectorAll('input');
+  if ([...inputs].some(i=>!i.value.trim())) return alert("Boş buraxmayın!");
+  cvData.references.push({
+    name: inputs[0].value,
+    position: inputs[1].value,
+    address: inputs[2].value,
+    tel: inputs[3].value,
+    email: inputs[4].value
+  });
+  renderReferences();
+}
+function addJobHtml() {
+  return `
+    <div class="job editable-inputs">
+      <input type="text" placeholder="Şirkət" /><br>
+      <input type="text" placeholder="İş dövrü" /><br>
+      <textarea rows="3" placeholder="Tapşırıqlar (sətir-sətir)"></textarea>
+      <br>
+      <button class="save-btn" onclick="addJob(this)">✔</button>
+      <button class="cancel-btn" onclick="renderJobs()">✖</button>
+    </div>
+  `;
+}
+function addJob(btn) {
+  let parent = btn.parentElement;
+  let inputs = parent.querySelectorAll('input');
+  let tasks = parent.querySelector('textarea').value.split('\n').map(t=>t.trim()).filter(Boolean);
+  if ([...inputs].some(i=>!i.value.trim()) || tasks.length === 0) return alert("Boş buraxmayın!");
+  cvData.jobs.push({
+    company: inputs[0].value,
+    period: inputs[1].value,
+    tasks
+  });
+  renderJobs();
+}
+
+
+document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
+  toggle.addEventListener('click', function() {
+    const targetId = this.getAttribute('data-target');
+    const content = document.getElementById(targetId);
+    if (!content) return;
+    content.classList.toggle('closed');
+
+    const arrow = this.querySelector('.arrow');
+    if (content.classList.contains('closed')) {
+      arrow.style.transform = "rotate(-90deg)";
+    } else {
+      arrow.style.transform = "rotate(0deg)";
     }
-  };
+  });
+});
 
-  // Skills
-  let addSkill = document.getElementById('add-skill-btn');
-  if (addSkill) addSkill.onclick = function() {
-    document.getElementById('skill-form').classList.remove('hidden');
-    document.getElementById('skill-input').focus();
-  };
-  let cancelSkill = document.getElementById('cancel-skill-btn');
-  if (cancelSkill) cancelSkill.onclick = function() {
-    document.getElementById('skill-form').classList.add('hidden');
-    document.getElementById('skill-input').value = '';
-  };
-  let saveSkill = document.getElementById('save-skill-btn');
-  if (saveSkill) saveSkill.onclick = function() {
-    const skill = document.getElementById('skill-input').value.trim();
-    if (skill) {
-      skills.push(skill);
-      renderAll();
-    }
-  };
-}
-
-function removeSkill(idx) {
-  skills.splice(idx, 1);
-  renderAll();
-}
-
-// Languages
-function removeLanguage(idx) {
-  languages.splice(idx, 1);
-  renderAll();
-}
-function setLanguageHandlers() {
-  let addLang = document.getElementById('add-language-btn');
-  if (addLang) addLang.onclick = function() {
-    document.getElementById('language-form').classList.remove('hidden');
-    document.getElementById('language-input').focus();
-  };
-  let cancelLang = document.getElementById('cancel-language-btn');
-  if (cancelLang) cancelLang.onclick = function() {
-    document.getElementById('language-form').classList.add('hidden');
-    document.getElementById('language-input').value = '';
-  };
-  let saveLang = document.getElementById('save-language-btn');
-  if (saveLang) saveLang.onclick = function() {
-    const lang = document.getElementById('language-input').value.trim();
-    if (lang) {
-      languages.push(lang);
-      renderAll();
-    }
-  };
-}
-function setProfileEditHandlers() {
-  let editBtn = document.getElementById('edit-profile-btn');
-  if (editBtn) editBtn.onclick = function() {
-    document.getElementById('profile-form').classList.remove('hidden');
-    document.getElementById('profile-input').value = profileText;
-    document.getElementById('profile-input').focus();
-  };
-  let cancelBtn = document.getElementById('cancel-profile-btn');
-  if (cancelBtn) cancelBtn.onclick = function() {
-    document.getElementById('profile-form').classList.add('hidden');
-  };
-  let saveBtn = document.getElementById('save-profile-btn');
-  if (saveBtn) saveBtn.onclick = function() {
-    const newText = document.getElementById('profile-input').value.trim();
-    if (newText) {
-      profileText = newText;
-      renderAll();
-    }
-  };
-}
-
-// Work
-function removeWork(idx) {
-  workExperience.splice(idx, 1);
-  renderAll();
-}
-function setWorkHandlers() {
-  let addWork = document.getElementById('add-work-btn');
-  if (addWork) addWork.onclick = function() {
-    document.getElementById('work-form').classList.remove('hidden');
-    document.getElementById('work-company').focus();
-  };
-  let cancelWork = document.getElementById('cancel-work-btn');
-  if (cancelWork) cancelWork.onclick = function() {
-    document.getElementById('work-form').classList.add('hidden');
-    document.getElementById('work-company').value = '';
-    document.getElementById('work-period').value = '';
-    document.getElementById('work-description').value = '';
-  };
-  let saveWork = document.getElementById('save-work-btn');
-  if (saveWork) saveWork.onclick = function() {
-    const company = document.getElementById('work-company').value.trim();
-    const period = document.getElementById('work-period').value.trim();
-    const desc = document.getElementById('work-description').value.trim();
-    if (company && period && desc) {
-      workExperience.push({company, period, details:[desc]});
-      renderAll();
-    }
-  };
-}
-
-// Reference
-function removeReference(idx) {
-  references.splice(idx, 1);
-  renderAll();
-}
-function setReferenceHandlers() {
-  let addRef = document.getElementById('add-reference-btn');
-  if (addRef) addRef.onclick = function() {
-    document.getElementById('reference-form').classList.remove('hidden');
-    document.getElementById('ref-name').focus();
-  };
-  let cancelRef = document.getElementById('cancel-reference-btn');
-  if (cancelRef) cancelRef.onclick = function() {
-    document.getElementById('reference-form').classList.add('hidden');
-    document.getElementById('ref-name').value = '';
-    document.getElementById('ref-position').value = '';
-    document.getElementById('ref-address').value = '';
-    document.getElementById('ref-phone').value = '';
-    document.getElementById('ref-email').value = '';
-  };
-  let saveRef = document.getElementById('save-reference-btn');
-  if (saveRef) saveRef.onclick = function() {
-    const name = document.getElementById('ref-name').value.trim();
-    const position = document.getElementById('ref-position').value.trim();
-    const address = document.getElementById('ref-address').value.trim();
-    const phone = document.getElementById('ref-phone').value.trim();
-    const email = document.getElementById('ref-email').value.trim();
-    if (name && position && address && phone && email) {
-      references.push({name, position, address, phone, email});
-      renderAll();
-    }
-  };
-}
-
-
-function setFormHandlers() {
-  setFormHandlersEduSkills();
-  setLanguageHandlers();
-  setProfileEditHandlers();
-  setWorkHandlers();
-  setReferenceHandlers();
-}
-function setFormHandlersEduSkills() {
-  // Education
-  let addEdu = document.getElementById('add-education-btn');
-  if (addEdu) addEdu.onclick = function() {
-    document.getElementById('education-form').classList.remove('hidden');
-    document.getElementById('edu-years').focus();
-  };
-  let cancelEdu = document.getElementById('cancel-education-btn');
-  if (cancelEdu) cancelEdu.onclick = function() {
-    document.getElementById('education-form').classList.add('hidden');
-    document.getElementById('edu-years').value = '';
-    document.getElementById('edu-school').value = '';
-    document.getElementById('edu-specialty').value = '';
-  };
-  let saveEdu = document.getElementById('save-education-btn');
-  if (saveEdu) saveEdu.onclick = function() {
-    const years = document.getElementById('edu-years').value.trim();
-    const school = document.getElementById('edu-school').value.trim();
-    const specialty = document.getElementById('edu-specialty').value.trim();
-    if (years && school && specialty) {
-      education.push({years, school, specialty});
-      renderAll();
-    }
-  };
-
-  // Skills
-  let addSkill = document.getElementById('add-skill-btn');
-  if (addSkill) addSkill.onclick = function() {
-    document.getElementById('skill-form').classList.remove('hidden');
-    document.getElementById('skill-input').focus();
-  };
-  let cancelSkill = document.getElementById('cancel-skill-btn');
-  if (cancelSkill) cancelSkill.onclick = function() {
-    document.getElementById('skill-form').classList.add('hidden');
-    document.getElementById('skill-input').value = '';
-  };
-  let saveSkill = document.getElementById('save-skill-btn');
-  if (saveSkill) saveSkill.onclick = function() {
-    const skill = document.getElementById('skill-input').value.trim();
-    if (skill) {
-      skills.push(skill);
-      renderAll();
-    }
-  };
-}
+window.onload = renderAll;

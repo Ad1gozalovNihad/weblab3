@@ -8,8 +8,63 @@
 </head>
 <body>
   <div class="container">
-    <div class="sidebar" id="sidebar"></div>
-    <div class="main" id="main"></div>
+    <div class="sidebar">
+      <img class="profile-pic" src="images/helpdesk.png" alt="Profile Picture" id="profile-pic" />
+
+      <div class="dropdown-section">
+        <h3 class="dropdown-toggle" data-target="contact-list">Contact <span class="arrow">&#9660;</span></h3>
+        <div id="contact-list" class="dropdown-content closed">
+          <ul id="contact-ul"></ul>
+          <button class="add-btn" onclick="showAddField('contact')">+</button>
+        </div>
+      </div>
+      <div class="dropdown-section">
+        <h3 class="dropdown-toggle" data-target="education-list">Education <span class="arrow">&#9660;</span></h3>
+        <div id="education-list" class="dropdown-content closed">
+          <ul id="education-ul"></ul>
+          <button class="add-btn" onclick="showAddField('education')">+</button>
+        </div>
+      </div>
+      <div class="dropdown-section">
+        <h3 class="dropdown-toggle" data-target="skills-list">Skills <span class="arrow">&#9660;</span></h3>
+        <div id="skills-list" class="dropdown-content closed">
+          <ul id="skills-ul"></ul>
+          <button class="add-btn" onclick="showAddField('skill')">+</button>
+        </div>
+      </div>
+      <div class="dropdown-section">
+        <h3 class="dropdown-toggle" data-target="languages-list">Languages <span class="arrow">&#9660;</span></h3>
+        <div id="languages-list" class="dropdown-content closed">
+          <ul id="languages-ul"></ul>
+          <button class="add-btn" onclick="showAddField('language')">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <h1 id="main-name"></h1>
+      <h2 id="main-title"></h2>
+      <div class="dropdown-section">
+        <div class="section-title dropdown-toggle" data-target="profile-section">Profile <span class="arrow">&#9660;</span></div>
+        <div id="profile-section" class="dropdown-content closed">
+          <ul id="profile-ul"></ul>
+          <button class="add-btn" onclick="showAddField('profile')">+</button>
+        </div>
+      </div>
+      <div class="dropdown-section">
+        <div class="section-title dropdown-toggle" data-target="work-list">Work Experience <span class="arrow">&#9660;</span></div>
+        <div id="work-list" class="dropdown-content closed">
+          <div id="jobs-container"></div>
+          <button class="add-btn" onclick="showAddField('job')">+</button>
+        </div>
+      </div>
+      <div class="dropdown-section">
+        <div class="section-title dropdown-toggle" data-target="references-section">References <span class="arrow">&#9660;</span></div>
+        <div id="references-section" class="dropdown-content closed">
+          <ul id="references-ul"></ul>
+          <button class="add-btn" onclick="showAddField('reference')">+</button>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
